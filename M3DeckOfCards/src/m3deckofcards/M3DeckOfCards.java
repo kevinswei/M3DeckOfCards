@@ -1,12 +1,12 @@
 //  M3DeckOfCards.java : M3 Deck Of Cards assignment
 //  Create a slot machine
 //
-//  Steven Forgacs - 15 Mar 2022
-//  CST-338
+//  Cerberus Security Concepts - 15 Mar 2022
+//  CST-338, Nina Khuu, Kevin Swei, Steve Forgacs
 //
 //	Version:	1
 //
-//	15 Mar 2022	slf     Initial
+//	15 Mar 2022	slf     Initial, changed comment block
 
 package m3deckofcards;
 
