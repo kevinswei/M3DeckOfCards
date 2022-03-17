@@ -7,7 +7,7 @@
 //	Version:	1
 //
 //	15 Mar 2022	slf     Initial, changed comment block
-//  16 Mar 2022 slf     Added M3DeckOfCards.start()and called from main()
+//	16 Mar 2022 slf     Added M3DeckOfCards.start()and called from main()
 
 package m3deckofcards;
 
@@ -36,7 +36,7 @@ public class M3DeckOfCards
     }
     
     /**
-     * start() to avoid non-static calls
+     * start() to avoid non-static call errors
      */
     public void start()
     {
