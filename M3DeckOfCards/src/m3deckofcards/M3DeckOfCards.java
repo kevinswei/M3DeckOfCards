@@ -7,6 +7,7 @@
 //	Version:	1
 //
 //	15 Mar 2022	slf     Initial, changed comment block
+//  16 Mar 2022 slf     Added M3DeckOfCards.start()and called from main()
 
 package m3deckofcards;
 
@@ -22,7 +23,25 @@ public class M3DeckOfCards
      */
     public static void main(String[] args)
     {
-        // TODO code application logic here
+        try
+        {
+            // Create a new Casino and start it
+            M3DeckOfCards m3 = new M3DeckOfCards();
+            m3.start();
+        }
+        catch (Exception e)
+        {
+            System.out.println("There was an error.");
+        }
     }
+    
+    /**
+     * start() to avoid non-static calls
+     */
+    public void start()
+    {
+        // Do the stuff here
+    }
+
     
 }
