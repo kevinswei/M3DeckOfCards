@@ -4,10 +4,11 @@
 //  Cerberus Security Concepts - 15 Mar 2022
 //  CST-338, Nina Khuu, Kevin Swei, Steve Forgacs
 //
-//	Version:	1
+//  Version:	1
 //
-//	15 Mar 2022	slf     Initial, changed comment block
-//	16 Mar 2022 slf     Added M3DeckOfCards.start()and called from main()
+//  15 Mar 2022	slf Initial, changed comment block
+//  16 Mar 2022 slf Added M3DeckOfCards.start()and called from main()
+//  18 Mar 2022 slf Added Class Card and supporting methods
 
 package m3deckofcards;
 
