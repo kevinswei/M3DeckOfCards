@@ -1,5 +1,5 @@
 //  M3DeckOfCards.java : M3 Deck Of Cards assignment
-//  Create a slot machine
+//  Create a deck of cards
 //
 //  Cerberus Security Concepts - 15 Mar 2022
 //  CST-338, Nina Khuu, Kevin Swei, Steve Forgacs
