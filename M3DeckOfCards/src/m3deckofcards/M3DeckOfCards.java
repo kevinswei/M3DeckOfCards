@@ -9,6 +9,7 @@
 //  15 Mar 2022	slf Initial, changed comment block
 //  16 Mar 2022 slf Added M3DeckOfCards.start()and called from main()
 //  18 Mar 2022 slf Added Class Card and supporting methods
+//  19 Mar 2022 slf Changed isValidRank() to isValid() as per spec
 
 package m3deckofcards;
 
@@ -96,11 +97,12 @@ public class M3DeckOfCards
             if (this.cardError == false)
             {
                 char origValue = origCard.getCardValue();
+                Suit origSuit = origCard.getCardSuit();
                 // Check if value is really valid
-                if (isValidRank(origValue))
+                if (isValid(origValue, origSuit))
                 {
                     this.value = origValue;
-                    this.suit = origCard.getCardSuit();
+                    this.suit = origSuit;
                     this.cardError = false;
                 }
             }
@@ -117,7 +119,7 @@ public class M3DeckOfCards
             this.cardError = true;
             
             // If the rank is valid, set card data
-            if (isValidRank(value))
+            if (isValid(value, suit))
             {
                 this.value = value;
                 this.suit = suit;
@@ -146,7 +148,7 @@ public class M3DeckOfCards
         {
             this.cardError = true;
             
-            if (isValidRank(value))
+            if (isValid(value, suit))
             {
                 this.cardError = false;
                 this.value = value;
@@ -207,7 +209,7 @@ public class M3DeckOfCards
             return isEqual;
         }
 
-        public boolean isValidRank(char value)
+        public boolean isValid(char value, Suit suit)
         {
             boolean isValid = false;
             
