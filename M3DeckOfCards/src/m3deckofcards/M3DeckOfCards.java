@@ -282,5 +282,212 @@ public class M3DeckOfCards
         System.out.println("Card rank " + c.getCardValue() + " Suit " + 
                 c.getCardSuit() + " Error " + c.getCardError());
     }
+static class Deck 
+    {
 
+       public final int MAX_CARDS = 52 * 6;
+
+       private static Card[] masterPack;
+       private Card[] cards;
+       private int topCard;
+
+    
+       /**
+       * Default constructor 
+       *If no parameters passed, default to 1 pack of cards
+       */
+       public Deck() 
+       {
+          allocateMasterPack();                 //Populate the master deck
+          topCard = 51;                         
+          cards = new Card[52];
+          int index = 0;
+          for (Card c : masterPack)     //Populate cards array from masterPack
+          {
+             cards[index++] = c;
+          }
+       }
+       
+       /**
+        *Constructor for multiple packs
+        *@param number of packs
+        */
+       public Deck(int numPacks)
+       {
+           if (numPacks * 52 > MAX_CARDS) 
+           {
+               System.out.println("Max number of packs allowed. "
+                     + "Defaulting to 6 packs.");
+               numPacks = 6;
+           }
+           allocateMasterPack();                //Populate the master deck
+           topCard = numPacks * 52 - 1;
+           cards = new Card[numPacks * 52];
+           int index = 0;
+           for (int i = 0; i < numPacks; i++)   
+           {
+              for (Card c : masterPack)   //Populate cards array from masterPack
+              {
+                 cards[index++] = c;
+              }
+           }
+       }
+       /**
+        * Method to re populate Cards array without populating masterPack
+        * @param number of packs of cards
+        */
+       public void init(int numPacks)
+       {
+           if (numPacks * 52 > MAX_CARDS)
+           {
+              System.out.println("Max number of packs allowed. "
+                     + "Defaulting to 6 packs.");
+              numPacks = 6;
+           }
+           cards = new Card[52 * numPacks];
+           topCard = 52 * numPacks - 1;
+           int index = 0;
+           for (int i = 0; i < numPacks; i++)
+           {
+              for (Card c : masterPack) 
+              {
+                 cards[index++] = c;
+              }
+           }
+       }
+       
+       /**
+        * Method to shuffle the deck
+        * Uses getRandom method to generate random number 
+        * Uses loop to swap cards from random indexes
+        */
+       public void shuffle() 
+       {
+           for (int i = 0; i < cards.length; i++) 
+           {
+              int swapIndex = getRandom(cards.length);
+
+              Card temp = cards[i];
+              cards[i] = cards[swapIndex];
+              cards[swapIndex] = temp;
+           }
+       }
+       
+       /**
+        * Method to deal a card from top of deck
+        * @return If empty, return bad card, else return card
+        */
+       public Card dealCard()
+       {
+           if (topCard < 0) 
+           {
+              Card c = new Card('Z', Card.Suit.hearts);
+               return c;
+           }
+           Card returnValue = cards[topCard--];
+
+           Card[] newDeck = new Card[cards.length - 1];
+
+           for (int i = 0; i < cards.length - 1; i++)
+           {
+              newDeck[i] = cards[i];
+           }
+
+           cards = newDeck;
+           return returnValue;
+       }
+
+       /*
+        * Method to get random number between a specified range
+        * @param the max range of the number
+        * @return a random number
+        */
+       public static int getRandom(int max)
+       {
+          return (int) (Math.random()* max);
+       }
+       
+       //Accessor for topCard
+       public int getTopCard()
+       {
+          return topCard;
+       }
+       
+       //Method used to populate the master pack array
+       static void allocateMasterPack() 
+       {
+
+          if (masterPack == null) //Has master pack been populated already? 
+          {
+             //Initialize the array for suits and ranks
+             char[] ranks = {'A', '2', '3', '4', '5', '6', '7', '8', '9', '0',
+               'J', 'Q', 'K'};
+
+             Card.Suit[] suits = {Card.Suit.clubs, Card.Suit.diamonds, 
+                     Card.Suit.hearts, Card.Suit.spades};
+
+             int index = 0;
+             
+             masterPack = new Card[52];
+             
+             //Loop to create card objects for each suit and rank
+             for (char rank: ranks)
+             {
+                  for (Card.Suit suit: suits) 
+                  {
+                     //Store the card object to masterPack index
+                      masterPack[index++] = new Card(rank, suit);
+                  }
+             }
+           }
+       }
+       }
+    void testDeckClass()
+    {
+       //test for 2 packs of cards
+       Deck d1 = new Deck(2);
+
+       for (int i = 0; i < 104; i++) 
+       {
+          System.out.println(d1.dealCard());
+       }
+       
+       System.out.println();
+       System.out.println();
+       System.out.println();
+       
+       //initialize and shuffle
+       d1.init(2);
+       d1.shuffle();
+
+       for (int i = 0; i < 104; i++)
+       {
+          System.out.println(d1.dealCard());
+       }
+       
+       System.out.println();
+       System.out.println();
+       System.out.println();
+       //Test for 1 pack
+       Deck d2 = new Deck();
+
+       for (int i = 0; i < 52; i++) 
+       {
+          System.out.println(d2.dealCard());
+       }
+       
+       System.out.println();
+       System.out.println();
+       System.out.println();
+       
+       //Initialize and shuffle
+       d2.init(1);
+       d2.shuffle();
+
+       for (int i = 0; i < 52; i++)
+       {
+          System.out.println(d2.dealCard());
+       }
+       
+   }
 }
