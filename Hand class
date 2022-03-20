@@ -1,0 +1,44 @@
+public class Hand {
+	int MAX_CARDS = 52;
+	private Card[] myCards;
+	private int numCards;
+	//a default constructor
+	public Hand() {
+		myCards = new Card[MAX_CARDS];
+	}
+	//remove all cards from the hand (in the simplest way).
+	public void resetHand() {
+		myCards = new Card[MAX_CARDS];
+		numCards = 0;
+	}
+	public boolean takCard(Card card) {
+		if(myCards == MAX_CARDS) {
+			return true;}
+		else {if(numCards == MAX_CARDS)
+				return false;
+		}
+	}
+	//returns and removes the card in the top occupied position of the array. If there are no more cards, return a "bad" card.
+	public Card playCard() {
+	if (numCards ==0) {
+		return null;
+	}		
+	}
+	public String toString(){
+		String newcard= "";
+		for(int i=0; i < numCards; i++) {
+			newcard = newcard + myCards + "";
+		return newcard;
+		}
+	}
+	public int getnumCards(){
+		return numCards;
+	}
+	public Card inspectCard(int k) {
+		if (k > numCards) {
+			Card Carderro = new Card();
+			return Carderro;
+		}
+		return myCards[k];
+	}
+}
