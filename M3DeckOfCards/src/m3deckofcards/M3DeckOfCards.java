@@ -282,7 +282,7 @@ public class M3DeckOfCards
         System.out.println("Card rank " + c.getCardValue() + " Suit " + 
                 c.getCardSuit() + " Error " + c.getCardError());
     }
-static class Deck 
+    static class Deck 
     {
 
        public final int MAX_CARDS = 52 * 6;
